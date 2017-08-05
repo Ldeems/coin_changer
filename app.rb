@@ -23,5 +23,20 @@ post '/amount' do
 	last = params[:last]
 	total = params[:total]
 	change = coin_changer(total.to_i)
-	"#{first} #{last} and #{total} and #{change}"
+	#"#{first} #{last} and #{total} and #{change}"
+	redirect '/results?first=' + first + "&last=" + last + "&total=" + total + "&change=" + change
+end	
+
+get '/results' do
+	first = params[:first]
+	last = params[:last]
+	total = params[:total]
+	change = params[:change]
+	erb :results, locals: {first: first, last: last, total: total, change: change}
+end	
+
+post '/again' do
+	first = params[:first]
+	last = params[:last]
+	redirect '/amount?first=' + first + "&last=" + last
 end	
