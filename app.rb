@@ -40,3 +40,9 @@ post '/again' do
 	last = params[:last]
 	redirect '/amount?first=' + first + "&last=" + last
 end	
+
+get '/random' do
+	erb :random
+end	
+
+
