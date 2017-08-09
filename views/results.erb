@@ -1,12 +1,12 @@
-Well <%=first%> you gave me <%=total%> and I turned it into: 
+Well <%=first%> you gave me <%=total%> and I turned it into:<br><br>
 
-
+<div onmouseover="frank(this)" onmouseout="greg(this)">
 <%change.each do|coin,value|%>
 <%=value%> <%=coin%>,
 <%end%>
-
-
-<h3><%=bill%></h3>
+<br>
+<%=bill%>
+</div>
 
 <script>
 var images = ["/image/003.jpg",
@@ -22,11 +22,18 @@ function imagefunction(){
 function backgroundfunction(){
     document.body.style.background = "url(/image/ring.jpg)";
 }
+
+function frank(a){
+	a.style.color = "blue"
+}
+
+function greg(a){
+	a.style.color = "green"
+}
+
 </script>
 
-<body onload="imagefunction()">{
-background-position: center center;
-}
+<body onload="imagefunction()">
 
 <form method= "post" action= "again">
 	<input type="hidden" name="first" value = "<%=first%>">
