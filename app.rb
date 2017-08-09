@@ -1,5 +1,6 @@
 require "sinatra"
 require_relative "coin_changer_method.rb"
+enable :sessions
 
 get '/' do
 	erb :name
@@ -22,17 +23,19 @@ post '/amount' do
 	first = params[:first]
 	last = params[:last]
 	total = params[:total]
-	change = coin_changer(total.to_i)
+	session[:change] = coin_changer(total.to_i)
+	bill = params[:info]
 	#"#{first} #{last} and #{total} and #{change}"
-	redirect '/results?first=' + first + "&last=" + last + "&total=" + total + "&change=" + change
+	redirect '/results?first=' + first + "&last=" + last + "&total=" + total + '&info=' + bill
 end	
 
 get '/results' do
 	first = params[:first]
 	last = params[:last]
 	total = params[:total]
-	change = params[:change]
-	erb :results, locals: {first: first, last: last, total: total, change: change}
+	bill = params[:info]
+	#"#{bill}"
+	erb :results, locals: {first: first, last: last, total: total, change: session[:change], bill: bill}
 end	
 
 post '/again' do

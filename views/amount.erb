@@ -1,8 +1,29 @@
 <h5>Well, <%=first%> what is the amount you have for me today, and remember  only turn it into the least combination of coins</h5>
 
+<script>
+
+
+
+var a = new Date();
+function datefunction(){
+    alert(a);
+    document.getElementById("fred").value = a;
+}
+</script>
+
+
+
+
 <form method="post" action="amount">
 	<input type="number" name="total">
-	<input type="submit" action="enter">
+	<input type="submit" action="enter" onclick="datefunction()"></button>
 	<input type="hidden" name="first" value="<%=first%>">
 	<input type="hidden" name="last" value="<%=last%>">
+	<input type="hidden" id="fred" name= "info">
 </form>	
+
+<!-- <p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = Date();
+</script> -->

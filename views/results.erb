@@ -1,8 +1,32 @@
-Well <%=first%> you gave me <%=total%> and I turned it into: <%=change%>
+Well <%=first%> you gave me <%=total%> and I turned it into: 
 
 
+<%change.each do|coin,value|%>
+<%=value%> <%=coin%>,
+<%end%>
 
 
+<h3><%=bill%></h3>
+
+<script>
+var images = ["/image/003.jpg",
+ 			  "/image/004.jpg", 
+ 			  "/image/005.jpg",
+ 			  "/image/yes.jpg",
+ 			  "/image/silo.jpg"];
+var randomImage = Math.floor(Math.random() * images.length) 
+function imagefunction(){
+    document.body.style.background= 'url(' + images[randomImage] +')'
+}
+
+function backgroundfunction(){
+    document.body.style.background = "url(/image/ring.jpg)";
+}
+</script>
+
+<body onload="imagefunction()">{
+background-position: center center;
+}
 
 <form method= "post" action= "again">
 	<input type="hidden" name="first" value = "<%=first%>">
@@ -10,3 +34,5 @@ Well <%=first%> you gave me <%=total%> and I turned it into: <%=change%>
 
 do it again?<input type= "submit" value= "redo">
 </form>
+<button type = "button" onclick = "backgroundfunction()">Try me!</button>
+</body>
